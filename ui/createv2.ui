@@ -1,0 +1,383 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>CreateDecisionDialog</class>
+ <widget class="QDialog" name="CreateDecisionDialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>600</width>
+    <height>700</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Создание решения</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QDialog {
+    background-color: rgb(214, 225, 229);
+    font-family: 'Segoe UI', Arial, sans-serif;
+}
+QLabel {
+    color: #2d3748;
+    font-weight: 500;
+}
+QLineEdit, QTextEdit {
+    border: 2px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 8px;
+    background: white;
+}
+QLineEdit:focus, QTextEdit:focus {
+    border-color: #4299e1;
+}
+QPushButton {
+    background-color: #4299e1;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 20px;
+    font-weight: 500;
+}
+QPushButton:hover {
+    background-color: #3182ce;
+}
+QPushButton#cancelButton {
+    background-color: #a0aec0;
+}
+QPushButton#cancelButton:hover {
+    background-color: #718096;
+}
+QGroupBox {
+    font-weight: bold;
+    border: 2px solid #e2e8f0;
+    border-radius: 8px;
+    margin-top: 10px;
+    padding-top: 15px;
+}
+QGroupBox::title {
+    subcontrol-origin: margin;
+    left: 10px;
+    padding: 0 5px 0 5px;
+}
+QListWidget, QTableWidget {
+    border: 2px solid #e2e8f0;
+    border-radius: 8px;
+    background: white;
+    alternate-background-color: #f7fafc;
+}
+QHeaderView::section {
+    background-color: #4299e1;
+    color: white;
+    padding: 4px;
+    border: 1px solid #e2e8f0;
+}
+QSpinBox {
+    border: 2px solid #e2e8f0;
+    border-radius: 4px;
+    padding: 2px;
+    background: white;
+}</string>
+  </property>
+  <layout class="QVBoxLayout" name="mainLayout">
+   <item>
+    <widget class="QFrame" name="frame">
+     <property name="minimumSize">
+      <size>
+       <width>150</width>
+       <height>140</height>
+      </size>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">
+background: #FFF7F7;
+border: 1px solid #000000;
+border-radius: 15px;
+</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::StyledPanel</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Raised</enum>
+     </property>
+     <widget class="QTextEdit" name="textEdit">
+      <property name="geometry">
+       <rect>
+        <x>140</x>
+        <y>60</y>
+        <width>430</width>
+        <height>70</height>
+       </rect>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>430</width>
+        <height>70</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>430</width>
+        <height>70</height>
+       </size>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border:none;
+color:black;
+background-color: rgb(241, 241, 241);</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>80</y>
+        <width>71</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border:none</string>
+      </property>
+      <property name="text">
+       <string>Описание</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_2">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>20</y>
+        <width>71</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border:none</string>
+      </property>
+      <property name="text">
+       <string>Название</string>
+      </property>
+     </widget>
+     <widget class="QTextEdit" name="textEdit_2">
+      <property name="geometry">
+       <rect>
+        <x>140</x>
+        <y>10</y>
+        <width>430</width>
+        <height>45</height>
+       </rect>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>430</width>
+        <height>45</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>430</width>
+        <height>45</height>
+       </size>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color:black;
+border:none;
+background-color: rgb(241, 241, 241);</string>
+      </property>
+     </widget>
+    </widget>
+   </item>
+   <item>
+    <widget class="QGroupBox" name="optionsGroup">
+     <property name="styleSheet">
+      <string notr="true">background: #FFF7F7;
+border: 1px solid #000000;
+border-radius: 15px;
+color:black;</string>
+     </property>
+     <property name="title">
+      <string>Варианты выбора</string>
+     </property>
+     <layout class="QVBoxLayout" name="optionsLayout">
+      <item>
+       <widget class="QListWidget" name="optionsList">
+        <property name="styleSheet">
+         <string notr="true">border:none;
+color:black;
+background-color: rgb(241, 241, 241);</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="optionsButtonsLayout">
+        <item>
+         <widget class="QPushButton" name="addOptionBtn">
+          <property name="cursor">
+           <cursorShape>PointingHandCursor</cursorShape>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QPushButton{
+background-color: rgb(0, 168, 64);
+border:none;
+border-radius:5px;
+color:white;
+}
+QPushButton:hover{
+background-color: rgb(98, 216, 24);
+}</string>
+          </property>
+          <property name="text">
+           <string>Добавить вариант</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="removeOptionBtn">
+          <property name="cursor">
+           <cursorShape>PointingHandCursor</cursorShape>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QPushButton{
+background-color: #CB2F30;
+border:none;
+border-radius:5px;
+color:white;
+}
+QPushButton:hover{
+background-color: rgb(255, 22, 1);
+}
+</string>
+          </property>
+          <property name="text">
+           <string>Удалить вариант</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="QGroupBox" name="criteriaGroup">
+     <property name="styleSheet">
+      <string notr="true">background: #FFF7F7;
+border: 1px solid #000000;
+border-radius: 15px;
+color:black;</string>
+     </property>
+     <property name="title">
+      <string>Критерии оценки</string>
+     </property>
+     <layout class="QVBoxLayout" name="criteriaLayout">
+      <item>
+       <widget class="QTableWidget" name="criteriaTable">
+        <property name="styleSheet">
+         <string notr="true">border:none;
+background-color: rgb(241, 241, 241);</string>
+        </property>
+        <property name="rowCount">
+         <number>0</number>
+        </property>
+        <property name="columnCount">
+         <number>3</number>
+        </property>
+        <column/>
+        <column/>
+        <column/>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="addCriteriaBtn">
+        <property name="cursor">
+         <cursorShape>PointingHandCursor</cursorShape>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton{
+background-color: rgb(0, 168, 64);
+border:none;
+border-radius:5px;
+color:white;
+}
+QPushButton:hover{
+background-color: rgb(98, 216, 24);
+}</string>
+        </property>
+        <property name="text">
+         <string>Добавить критерий</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="buttonsLayout">
+     <item>
+      <widget class="QPushButton" name="saveBtn">
+       <property name="cursor">
+        <cursorShape>PointingHandCursor</cursorShape>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton{
+background-color: rgb(0, 168, 64);
+border:none;
+border-radius:5px;
+}
+QPushButton:hover{
+background-color: rgb(98, 216, 24);
+}</string>
+       </property>
+       <property name="text">
+        <string>Сохранить</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="cancelButton">
+       <property name="cursor">
+        <cursorShape>PointingHandCursor</cursorShape>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton{
+background-color: #CB2F30;
+border:none;
+border-radius:5px;
+}
+QPushButton:hover{
+background-color: rgb(255, 22, 1);
+}
+</string>
+       </property>
+       <property name="text">
+        <string>Отмена</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="analyzeBtn">
+       <property name="enabled">
+        <bool>true</bool>
+       </property>
+       <property name="cursor">
+        <cursorShape>PointingHandCursor</cursorShape>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QBtn{
+
+}</string>
+       </property>
+       <property name="text">
+        <string>Анализировать</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

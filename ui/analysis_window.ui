@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>AnalysisDialog</class>
+ <widget class="QDialog" name="AnalysisDialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>757</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Анализ решения</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QDialog {
+ background-color: rgb(214, 225, 229);;
+    font-family: 'Segoe UI', Arial, sans-serif;
+}
+QLabel {
+    color: #2d3748;
+    font-weight: 500;
+}
+QGroupBox {
+    font-weight: bold;
+    border: 2px solid #e2e8f0;
+    border-radius: 8px;
+    margin-top: 10px;
+    padding-top: 15px;
+}
+QPushButton {
+    background-color: #4299e1;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 20px;
+    font-weight: 500;
+}
+QPushButton:hover {
+    background-color: #3182ce;
+}</string>
+  </property>
+  <layout class="QVBoxLayout" name="mainLayout">
+   <item>
+    <widget class="QLabel" name="titleLabel">
+     <property name="styleSheet">
+      <string notr="true">font-size: 16px; font-weight: bold;</string>
+     </property>
+     <property name="text">
+      <string>Анализ решения</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QGroupBox" name="visualGroup">
+     <property name="styleSheet">
+      <string notr="true">background: #FFF7F7;
+border: 1px solid #000000;
+border-radius: 15px;
+color:black;</string>
+     </property>
+     <property name="title">
+      <string>Визуальное сравнение вариантов</string>
+     </property>
+     <layout class="QVBoxLayout" name="visualLayout">
+      <item>
+       <widget class="QLabel" name="placeholderLabel">
+        <property name="styleSheet">
+         <string notr="true">border:none;
+color:black;
+background-color: rgb(241, 241, 241);
+</string>
+        </property>
+        <property name="text">
+         <string>Здесь будут графики и диаграммы</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="QGroupBox" name="tableGroup">
+     <property name="styleSheet">
+      <string notr="true">background: #FFF7F7;
+border: 1px solid #000000;
+border-radius: 15px;
+color:black;</string>
+     </property>
+     <property name="title">
+      <string>Детальная таблица оценок</string>
+     </property>
+     <layout class="QVBoxLayout" name="tableLayout">
+      <item>
+       <widget class="QLabel" name="tablePlaceholder">
+        <property name="styleSheet">
+         <string notr="true">border:none;
+color:black;
+background-color: rgb(241, 241, 241);</string>
+        </property>
+        <property name="text">
+         <string>Здесь будет таблица с оценками</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="QGroupBox" name="resultGroup">
+     <property name="styleSheet">
+      <string notr="true">background: #FFF7F7;
+border: 1px solid #000000;
+border-radius: 15px;
+color:black;</string>
+     </property>
+     <property name="title">
+      <string>Результат анализа</string>
+     </property>
+     <layout class="QVBoxLayout" name="resultLayout">
+      <item>
+       <widget class="QLabel" name="resultLabel">
+        <property name="styleSheet">
+         <string notr="true">border:none;
+color:black;
+background-color: rgb(241, 241, 241);</string>
+        </property>
+        <property name="text">
+         <string>Рекомендуемый вариант будет здесь</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="buttonsLayout">
+     <item>
+      <widget class="QPushButton" name="saveReportBtn">
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>50</height>
+        </size>
+       </property>
+       <property name="cursor">
+        <cursorShape>PointingHandCursor</cursorShape>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton{
+background-color: rgb(0, 168, 64);
+border:none;
+border-radius:5px;
+}
+QPushButton:hover{
+background-color: rgb(98, 216, 24);
+}</string>
+       </property>
+       <property name="text">
+        <string>Сохранить отчет</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="exportBtn">
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>50</height>
+        </size>
+       </property>
+       <property name="cursor">
+        <cursorShape>PointingHandCursor</cursorShape>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QBtn{
+
+}</string>
+       </property>
+       <property name="text">
+        <string>Экспорт</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="backBtn">
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>50</height>
+        </size>
+       </property>
+       <property name="cursor">
+        <cursorShape>PointingHandCursor</cursorShape>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton{
+background-color: #CB2F30;
+border:none;
+border-radius:5px;
+}
+QPushButton:hover{
+background-color: rgb(255, 22, 1);
+}
+</string>
+       </property>
+       <property name="text">
+        <string>Назад</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

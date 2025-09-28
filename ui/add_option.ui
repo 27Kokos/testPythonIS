@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>AddOptionDialog</class>
+ <widget class="QDialog" name="AddOptionDialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>400</width>
+    <height>458</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Добавление варианта</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QDialog {
+    background-color: rgb(214, 225, 229);
+    font-family: 'Segoe UI', Arial, sans-serif;
+}
+QLabel {
+    color: #2d3748;
+    font-weight: 500;
+}
+QLineEdit, QTextEdit {
+    border: 2px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 8px;
+    background: white;
+}
+QLineEdit:focus, QTextEdit:focus {
+    border-color: #4299e1;
+}
+QPushButton {
+    background-color: #4299e1;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 20px;
+    font-weight: 500;
+}
+QPushButton:hover {
+    background-color: #3182ce;
+}
+QPushButton#cancelButton {
+    background-color: #a0aec0;
+}
+QPushButton#cancelButton:hover {
+    background-color: #718096;
+}
+QGroupBox {
+    font-weight: bold;
+    border: 2px solid #e2e8f0;
+    border-radius: 8px;
+    margin-top: 10px;
+    padding-top: 15px;
+}
+QGroupBox::title {
+    subcontrol-origin: margin;
+    left: 10px;
+    padding: 0 5px 0 5px;
+}
+QListWidget, QTableWidget {
+    border: 2px solid #e2e8f0;
+    border-radius: 8px;
+    background: white;
+    alternate-background-color: #f7fafc;
+}
+QHeaderView::section {
+    background-color: #4299e1;
+    color: white;
+    padding: 4px;
+    border: 1px solid #e2e8f0;
+}
+QSpinBox {
+    border: 2px solid #e2e8f0;
+    border-radius: 4px;
+    padding: 2px;
+    background: white;
+}</string>
+  </property>
+  <layout class="QVBoxLayout" name="mainLayout">
+   <item>
+    <widget class="QLabel" name="titleLabel">
+     <property name="text">
+      <string>Название варианта:</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QLineEdit" name="optionNameEdit">
+     <property name="styleSheet">
+      <string notr="true">color:black;
+background-color: rgb(241, 241, 241);</string>
+     </property>
+     <property name="placeholderText">
+      <string>Введите название варианта</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QLabel" name="descLabel">
+     <property name="text">
+      <string>Описание варианта:</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QTextEdit" name="optionDescEdit">
+     <property name="styleSheet">
+      <string notr="true">color:black;
+background-color: rgb(241, 241, 241);</string>
+     </property>
+     <property name="placeholderText">
+      <string>Опишите данный вариант...</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QGroupBox" name="propertiesGroup">
+     <property name="styleSheet">
+      <string notr="true">background: #FFF7F7;
+border: 1px solid #000000;
+border-radius: 15px;
+color:black;</string>
+     </property>
+     <property name="title">
+      <string>Характеристики</string>
+     </property>
+     <layout class="QFormLayout" name="formLayout">
+      <item row="0" column="0">
+       <widget class="QLabel" name="priceLabel">
+        <property name="styleSheet">
+         <string notr="true">border:none;
+color:black;
+</string>
+        </property>
+        <property name="text">
+         <string>Цена:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QLineEdit" name="priceEdit">
+        <property name="styleSheet">
+         <string notr="true">border:none;
+color:black;
+background-color: rgb(241, 241, 241);</string>
+        </property>
+        <property name="placeholderText">
+         <string>0</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="timeLabel">
+        <property name="styleSheet">
+         <string notr="true">border:none;
+color:black;
+</string>
+        </property>
+        <property name="text">
+         <string>Сроки:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QLineEdit" name="timeEdit">
+        <property name="styleSheet">
+         <string notr="true">border:none;
+color:black;
+background-color: rgb(241, 241, 241);</string>
+        </property>
+        <property name="placeholderText">
+         <string>0 дней</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QLabel" name="qualityLabel">
+        <property name="styleSheet">
+         <string notr="true">border:none;
+color:black;
+</string>
+        </property>
+        <property name="text">
+         <string>Качество:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="1">
+       <widget class="QComboBox" name="qualityCombo">
+        <property name="styleSheet">
+         <string notr="true">border:none;
+color:black;
+background-color: rgb(241, 241, 241);</string>
+        </property>
+        <property name="placeholderText" stdset="0">
+         <string>Выберите качество</string>
+        </property>
+        <item>
+         <property name="text">
+          <string>Высокое</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Среднее</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Низкое</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="buttonsLayout">
+     <item>
+      <spacer name="horizontalSpacer">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="addButton">
+       <property name="styleSheet">
+        <string notr="true">QPushButton{
+background-color: rgb(0, 168, 64);
+border:none;
+border-radius:5px;
+}
+QPushButton:hover{
+background-color: rgb(98, 216, 24);
+}</string>
+       </property>
+       <property name="text">
+        <string>Добавить</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="cancelButton">
+       <property name="styleSheet">
+        <string notr="true">QPushButton{
+background-color: #CB2F30;
+border:none;
+border-radius:5px;
+}
+QPushButton:hover{
+background-color: rgb(255, 22, 1);
+}
+</string>
+       </property>
+       <property name="text">
+        <string>Отмена</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
