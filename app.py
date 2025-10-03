@@ -5,6 +5,10 @@ from welcome_window import WelcomeWindow
 from main_window import MainWindow 
 
 def main():
+    # Инициализация БД при запуске приложения
+    from database import Database
+    db = Database()  # Это создаст таблицы если их нет
+    
     app = QApplication(sys.argv)
     
     welcome = WelcomeWindow()

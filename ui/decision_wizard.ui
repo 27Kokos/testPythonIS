@@ -1,0 +1,436 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>DecisionWizard</class>
+ <widget class="QDialog" name="DecisionWizard">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>600</width>
+    <height>500</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Создание решения</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QDialog {
+    background-color: rgb(214, 225, 229);
+    font-family: 'Segoe UI', Arial, sans-serif;
+   }
+   QLabel {
+    color: #2d3748;
+    font-weight: 500;
+   }
+   QLineEdit, QTextEdit {
+    border: 2px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 8px;
+    background: white;
+   }
+   QPushButton {
+    background-color: #4299e1;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 20px;
+    font-weight: 500;
+   }
+   QPushButton:hover {
+    background-color: #3182ce;
+   }
+   QPushButton:disabled {
+    background-color: #a0aec0;
+   }</string>
+  </property>
+  <layout class="QVBoxLayout" name="mainLayout">
+   <item>
+    <widget class="QLabel" name="progressLabel">
+     <property name="text">
+      <string>Шаг 1/5: Основное</string>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font-weight: bold; font-size: 14px; padding: 10px;</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QStackedWidget" name="stackedWidget">
+     <property name="currentIndex">
+      <number>0</number>
+     </property>
+     <widget class="QWidget" name="step1">
+      <layout class="QVBoxLayout" name="step1Layout">
+       <item>
+        <widget class="QLabel" name="step1TitleLabel">
+         <property name="text">
+          <string>Основная информация</string>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">font-size: 16px; font-weight: bold;</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="step1NameLabel">
+         <property name="text">
+          <string>Название решения:</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="titleEdit">
+         <property name="placeholderText">
+          <string>Введите название решения</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="step1DescLabel">
+         <property name="text">
+          <string>Описание (необязательно):</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QTextEdit" name="descEdit">
+         <property name="maximumHeight">
+          <number>100</number>
+         </property>
+         <property name="placeholderText">
+          <string>Опишите ваше решение...</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="verticalSpacer">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="step2">
+      <layout class="QVBoxLayout" name="step2Layout">
+       <item>
+        <widget class="QLabel" name="step2TitleLabel">
+         <property name="text">
+          <string>Варианты решения</string>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">font-size: 16px; font-weight: bold;</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="step2DescLabel">
+         <property name="text">
+          <string>Добавьте варианты для сравнения:</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QListWidget" name="optionsList"/>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="step2Controls">
+         <item>
+          <widget class="QLineEdit" name="optionNameEdit">
+           <property name="placeholderText">
+            <string>Название варианта</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="addOptionBtn">
+           <property name="text">
+            <string>+ Добавить</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="removeOptionBtn">
+           <property name="text">
+            <string>- Удалить</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="step3">
+      <layout class="QVBoxLayout" name="step3Layout">
+       <item>
+        <widget class="QLabel" name="step3TitleLabel">
+         <property name="text">
+          <string>Критерии оценки</string>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">font-size: 16px; font-weight: bold;</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="step3TemplateLabel">
+         <property name="text">
+          <string>Выберите шаблон:</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QComboBox" name="templateCombo">
+         <item>
+          <property name="text">
+           <string/>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Покупка товара</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Выбор проекта</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Подбор команды</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Базовый</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="step3CriteriaLabel">
+         <property name="text">
+          <string>Критерии:</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QTableWidget" name="criteriaTable">
+         <property name="rowCount">
+          <number>0</number>
+         </property>
+         <property name="columnCount">
+          <number>3</number>
+         </property>
+         <column>
+          <property name="text">
+           <string>Название</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Тип</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Вес</string>
+          </property>
+         </column>
+        </widget>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="step3Controls">
+         <item>
+          <widget class="QLineEdit" name="criterionNameEdit">
+           <property name="placeholderText">
+            <string>Название критерия</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QComboBox" name="criterionTypeCombo">
+           <item>
+            <property name="text">
+             <string>Число</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Да/Нет</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="weightLabel">
+           <property name="text">
+            <string>Вес:</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QSpinBox" name="criterionWeightSpin">
+           <property name="minimum">
+            <number>1</number>
+           </property>
+           <property name="maximum">
+            <number>5</number>
+           </property>
+           <property name="value">
+            <number>3</number>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="addCriterionBtn">
+           <property name="text">
+            <string>+ Добавить</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="removeCriterionBtn">
+           <property name="text">
+            <string>- Удалить</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="step4">
+      <layout class="QVBoxLayout" name="step4Layout">
+       <item>
+        <widget class="QLabel" name="step4TitleLabel">
+         <property name="text">
+          <string>Оценка вариантов</string>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">font-size: 16px; font-weight: bold;</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="step4DescLabel">
+         <property name="text">
+          <string>Оцените варианты по каждому критерию:</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QTableWidget" name="evaluationTable">
+         <property name="rowCount">
+          <number>0</number>
+         </property>
+         <property name="columnCount">
+          <number>0</number>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="step5">
+      <layout class="QVBoxLayout" name="step5Layout">
+       <item>
+        <widget class="QLabel" name="step5TitleLabel">
+         <property name="text">
+          <string>Результаты анализа</string>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">font-size: 16px; font-weight: bold;</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="step5DescLabel">
+         <property name="text">
+          <string>Ранжированные варианты по итоговой оценке:</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QListWidget" name="resultsList"/>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="step5Controls">
+         <item>
+          <widget class="QPushButton" name="saveBtn">
+           <property name="text">
+            <string>Сохранить решение</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="horizontalSpacer">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="navigationLayout">
+     <item>
+      <widget class="QPushButton" name="backBtn">
+       <property name="text">
+        <string>Назад</string>
+       </property>
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="nextBtn">
+       <property name="text">
+        <string>Далее</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer name="horizontalSpacer_2">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="cancelBtn">
+       <property name="text">
+        <string>Отмена</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

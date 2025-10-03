@@ -1,4 +1,5 @@
-from PyQt6.QtWidgets import QMainWindow, QMessageBox, QVBoxLayout
+from PyQt6.QtWidgets import QMainWindow, QMessageBox, QVBoxLayout, QListWidget, QListWidgetItem
+from PyQt6.QtCore import Qt  # ДОБАВИТЬ ЭТОТ ИМПОРТ
 from PyQt6 import uic
 import os
 from PyQt6.QtGui import QIcon 
@@ -84,7 +85,68 @@ class MainWindow(QMainWindow):
         
         decisions_widget = self.load_ui_widget('decisions_page.ui')
         if decisions_widget:
+            # Загружаем решения из БД
+            from database import Database
+            db = Database()
+            decisions = db.get_decisions()
+            
+            # Очищаем placeholder и добавляем реальные решения
+            if hasattr(decisions_widget, 'placeholderLabel'):
+                decisions_widget.placeholderLabel.setText("")  # Очищаем заглушку
+            
+            # Создаем виджет для отображения решений
+            decisions_list = QListWidget()
+            for decision in decisions:
+                item_text = f"{decision[1]} - {decision[3]}"  # Название + дата
+                item = QListWidgetItem(item_text)
+                item.setData(Qt.ItemDataRole.UserRole, decision[0])  # ID решения
+                decisions_list.addItem(item)
+            
+            # Подключаем двойной клик для открытия решения
+            decisions_list.itemDoubleClicked.connect(self.open_decision)
+            
+            layout = decisions_widget.layout()
+            if layout:
+                layout.addWidget(decisions_list)
+            
             self.widget_2.layout().addWidget(decisions_widget)
+
+    def open_decision(self, item):
+        """Открытие выбранного решения"""
+        decision_id = item.data(Qt.ItemDataRole.UserRole)
+        from database import Database
+        db = Database()
+        
+        # Получаем данные решения
+        decision_data = db.get_decision_by_id(decision_id)
+        if not decision_data:
+            QMessageBox.warning(self, "Ошибка", "Решение не найдено")
+            return
+            
+        options = db.get_options_by_decision(decision_id)
+        criteria = db.get_criteria_by_decision(decision_id)
+        results = db.get_analysis_results(decision_id)
+        
+        # Показываем информацию о решении
+        info_text = f"Решение: {decision_data[1]}\n\n"
+        info_text += f"Описание: {decision_data[2]}\n\n"
+        
+        info_text += f"Варианты:\n"
+        for option in options:
+            info_text += f"- {option[1]}\n"
+        
+        info_text += f"\nКритерии:\n"
+        for criterion in criteria:
+            info_text += f"- {criterion[1]} (тип: {criterion[2]}, вес: {criterion[3]})\n"
+        
+        if results:
+            info_text += f"\nРезультаты:\n"
+            for result in results:
+                info_text += f"{result[3]}. {result[1]} - {result[2]:.1f} баллов\n"
+        else:
+            info_text += f"\nРезультаты анализа отсутствуют"
+        
+        QMessageBox.information(self, "Информация о решении", info_text)
     
     def show_history(self):
         """Показать историю анализов"""
@@ -117,8 +179,8 @@ class MainWindow(QMainWindow):
     def create_decision(self):
         """Открыть окно создания решения"""
         try:
-            from create_window import CreateDecisionDialog
-            dialog = CreateDecisionDialog(self)
+            from decision_wizard import DecisionWizard
+            dialog = DecisionWizard(self)
             if dialog.exec():
                 decision_data = dialog.get_decision_data()
                 print(f"Создано решение: {decision_data['title']}")
