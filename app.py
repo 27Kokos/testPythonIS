@@ -1,13 +1,11 @@
 import sys
-import os
 from PyQt6.QtWidgets import QApplication
 from welcome_window import WelcomeWindow
-from main_window import MainWindow 
+from main_window import MainWindow
+from database import Database
 
 def main():
-    # Инициализация БД при запуске приложения
-    from database import Database
-    db = Database()  # Это создаст таблицы если их нет
+    Database()
     
     app = QApplication(sys.argv)
     

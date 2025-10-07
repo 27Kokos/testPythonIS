@@ -12,7 +12,6 @@ class Database:
             with sqlite3.connect(self.db_path) as conn:
                 cursor = conn.cursor()
                 
-                # Таблица решений
                 cursor.execute('''
                     CREATE TABLE IF NOT EXISTS Decisions (
                         id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -23,7 +22,6 @@ class Database:
                     )
                 ''')
                 
-                # Таблица вариантов
                 cursor.execute('''
                     CREATE TABLE IF NOT EXISTS Options (
                         id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -34,7 +32,6 @@ class Database:
                     )
                 ''')
                 
-                # Таблица критериев (упрощенная)
                 cursor.execute('''
                     CREATE TABLE IF NOT EXISTS Criteria (
                         id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -46,7 +43,6 @@ class Database:
                     )
                 ''')
                 
-                # Таблица оценок (новая - связывает варианты и критерии)
                 cursor.execute('''
                     CREATE TABLE IF NOT EXISTS Evaluations (
                         id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -57,11 +53,10 @@ class Database:
                         FOREIGN KEY (decision_id) REFERENCES Decisions(id) ON DELETE CASCADE,
                         FOREIGN KEY (option_id) REFERENCES Options(id) ON DELETE CASCADE,
                         FOREIGN KEY (criterion_id) REFERENCES Criteria(id) ON DELETE CASCADE,
-                        UNIQUE(option_id, criterion_id)
+                        UNIQUE(decision_id, option_id, criterion_id)
                     )
                 ''')
                 
-                # Таблица результатов анализа
                 cursor.execute('''
                     CREATE TABLE IF NOT EXISTS AnalysisResults (
                         id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -77,12 +72,9 @@ class Database:
                 ''')
                 
                 conn.commit()
-                print("Таблицы БД успешно созданы/проверены")
-                
         except sqlite3.Error as e:
             print(f"Ошибка создания таблиц: {e}")
 
-    # Методы для работы с решениями
     def add_decision(self, title, description="", template_used=""):
         try:
             with sqlite3.connect(self.db_path) as conn:
@@ -111,7 +103,18 @@ class Database:
             print(f"Ошибка получения решений: {e}")
             return []
 
-    # Методы для работы с вариантами
+    def get_decision_by_id(self, decision_id):
+        try:
+            with sqlite3.connect(self.db_path) as conn:
+                cursor = conn.cursor()
+                cursor.execute('''
+                    SELECT * FROM Decisions WHERE id = ?
+                ''', (decision_id,))
+                return cursor.fetchone()
+        except sqlite3.Error as e:
+            print(f"Ошибка получения решения: {e}")
+            return None
+
     def add_option(self, decision_id, name, description=""):
         try:
             with sqlite3.connect(self.db_path) as conn:
@@ -134,21 +137,21 @@ class Database:
                     SELECT id, name, description 
                     FROM Options 
                     WHERE decision_id = ?
+                    ORDER BY id
                 ''', (decision_id,))
                 return cursor.fetchall()
         except sqlite3.Error as e:
             print(f"Ошибка получения вариантов: {e}")
             return []
 
-    # Методы для работы с критериями
-    def add_criterion(self, decision_id, name, type, weight):
+    def add_criterion(self, decision_id, name, type_, weight):
         try:
             with sqlite3.connect(self.db_path) as conn:
                 cursor = conn.cursor()
                 cursor.execute('''
                     INSERT INTO Criteria (decision_id, name, type, weight)
                     VALUES (?, ?, ?, ?)
-                ''', (decision_id, name, type, weight))
+                ''', (decision_id, name, type_, weight))
                 conn.commit()
                 return cursor.lastrowid
         except sqlite3.Error as e:
@@ -163,13 +166,13 @@ class Database:
                     SELECT id, name, type, weight 
                     FROM Criteria 
                     WHERE decision_id = ?
+                    ORDER BY id
                 ''', (decision_id,))
                 return cursor.fetchall()
         except sqlite3.Error as e:
             print(f"Ошибка получения критериев: {e}")
             return []
 
-    # Методы для работы с оценками
     def add_evaluation(self, decision_id, option_id, criterion_id, value):
         try:
             with sqlite3.connect(self.db_path) as conn:
@@ -190,11 +193,8 @@ class Database:
             with sqlite3.connect(self.db_path) as conn:
                 cursor = conn.cursor()
                 cursor.execute('''
-                    SELECT e.option_id, e.criterion_id, e.value,
-                           o.name as option_name, c.name as criterion_name
+                    SELECT e.option_id, e.criterion_id, e.value
                     FROM Evaluations e
-                    JOIN Options o ON e.option_id = o.id
-                    JOIN Criteria c ON e.criterion_id = c.id
                     WHERE e.decision_id = ?
                 ''', (decision_id,))
                 return cursor.fetchall()
@@ -202,18 +202,12 @@ class Database:
             print(f"Ошибка получения оценок: {e}")
             return []
 
-    # Методы для работы с результатами анализа
     def save_analysis_results(self, decision_id, results):
-        """Сохраняет результаты анализа
-        results: список кортежей (option_id, total_score, rank)
-        """
         try:
             with sqlite3.connect(self.db_path) as conn:
                 cursor = conn.cursor()
-                # Удаляем старые результаты
                 cursor.execute('DELETE FROM AnalysisResults WHERE decision_id = ?', (decision_id,))
                 
-                # Сохраняем новые
                 for option_id, total_score, rank in results:
                     cursor.execute('''
                         INSERT INTO AnalysisResults 
@@ -244,12 +238,10 @@ class Database:
             print(f"Ошибка получения результатов анализа: {e}")
             return []
 
-    # Удаление решения и всех связанных данных
     def delete_decision(self, decision_id):
         try:
             with sqlite3.connect(self.db_path) as conn:
                 cursor = conn.cursor()
-                # Каскадное удаление сработает из-за ON DELETE CASCADE
                 cursor.execute('DELETE FROM Decisions WHERE id = ?', (decision_id,))
                 conn.commit()
                 return True

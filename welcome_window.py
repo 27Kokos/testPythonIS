@@ -1,6 +1,6 @@
 from PyQt6.QtWidgets import QMainWindow
 from PyQt6 import uic
-from PyQt6.QtGui import QIcon 
+from PyQt6.QtGui import QIcon
 import os
 import sys
 
@@ -28,9 +28,6 @@ class WelcomeWindow(QMainWindow):
     def connect_signals(self):
         if hasattr(self, 'start_btn'):
             self.start_btn.clicked.connect(self.on_start_clicked)
-        else:
-            print("Кнопка start_btn не найдена!")
-            print("Доступные атрибуты:", [attr for attr in dir(self) if not attr.startswith('_')])
             
     def on_start_clicked(self):
         self.user_accepted = True
