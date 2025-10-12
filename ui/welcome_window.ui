@@ -20,7 +20,7 @@
    <string>DecisionHelper</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-color: #cbe6e8;
+   <string notr="true">background-color: #e0e1dd;
 
 
 </string>
@@ -75,7 +75,7 @@
        </property>
        <property name="styleSheet">
         <string notr="true">QLabel{
-background-color: rgb(243, 255, 240);
+background-color: #ffffff;
 color: #5247e0;
 border-radius: 15px;
 padding: 8px 16px;
@@ -133,7 +133,7 @@ QLabel:hover {
        <property name="styleSheet">
         <string notr="true">QTextBrowser{
 color:#5247e0;
-background-color: #fefefe;
+background-color: #ffffff;
 border-radius:10px;
 margin:10px;
 margin-top:5 px;
@@ -202,7 +202,7 @@ p, li { white-space: pre-wrap; }
     <property name="styleSheet">
      <string notr="true">QPushButton{
 color:#5247e0;
-background-color: #fefefe;
+background-color: rgb(255, 255, 255);
 border-radius:10px;
 margin:10px;
 margin-top:5 px;

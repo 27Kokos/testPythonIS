@@ -15,62 +15,104 @@
   </property>
   <property name="styleSheet">
    <string notr="true">QDialog {
- background-color: rgb(214, 225, 229);;
+    background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 #f0f4f8, stop:1 #d9e2ec);
     font-family: 'Segoe UI', Arial, sans-serif;
+    color: #2c3e50;
 }
 QLabel {
-    color: #2d3748;
+    color: #2c3e50;
     font-weight: 500;
 }
 QGroupBox {
-    font-weight: bold;
-    border: 2px solid #e2e8f0;
-    border-radius: 8px;
-    margin-top: 10px;
-    padding-top: 15px;
+    background-color: #ffffff;
+    font-weight: 600;
+    font-size: 16px;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    margin-top: 15px;
+    padding-top: 20px;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.05);
+}
+QGroupBox::title {
+    color: #2c3e50;
+    padding: 5px 10px;
 }
 QPushButton {
-    background-color: #4299e1;
+    background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 #00b894, stop:1 #00d2d3);
     color: white;
     border: none;
-    border-radius: 8px;
-    padding: 10px 20px;
-    font-weight: 500;
+    border-radius: 10px;
+    padding: 12px 24px;
+    font-weight: 600;
+    font-size: 14px;
 }
 QPushButton:hover {
-    background-color: #3182ce;
+    background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 #01907a, stop:1 #00b3b4);
+}
+QPushButton:pressed {
+    background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 #017f6a, stop:1 #009a9b);
+}
+QPushButton#exportBtn {
+    background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 #0984e3, stop:1 #00cec9);
+}
+QPushButton#exportBtn:hover {
+    background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 #0772c9, stop:1 #00b3b4);
+}
+QPushButton#exportBtn:pressed {
+    background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 #065fb0, stop:1 #009a9b);
+}
+QPushButton#backBtn {
+    background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 #e17055, stop:1 #d63031);
+}
+QPushButton#backBtn:hover {
+    background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 #c75c47, stop:1 #b71c1c);
+}
+QPushButton#backBtn:pressed {
+    background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 #af503f, stop:1 #9e0f0f);
 }</string>
   </property>
   <layout class="QVBoxLayout" name="mainLayout">
+   <property name="spacing">
+    <number>20</number>
+   </property>
+   <property name="leftMargin">
+    <number>20</number>
+   </property>
+   <property name="topMargin">
+    <number>20</number>
+   </property>
+   <property name="rightMargin">
+    <number>20</number>
+   </property>
+   <property name="bottomMargin">
+    <number>20</number>
+   </property>
    <item>
     <widget class="QLabel" name="titleLabel">
      <property name="styleSheet">
-      <string notr="true">font-size: 16px; font-weight: bold;</string>
+      <string notr="true">font-size: 18px; font-weight: bold; color: #2c3e50; background-color: #ffffff; border-radius: 10px; padding: 12px; box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.05);</string>
      </property>
      <property name="text">
       <string>Анализ решения</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
      </property>
     </widget>
    </item>
    <item>
     <widget class="QGroupBox" name="visualGroup">
-     <property name="styleSheet">
-      <string notr="true">background: #FFF7F7;
-border: 1px solid #000000;
-border-radius: 15px;
-color:black;</string>
-     </property>
      <property name="title">
       <string>Визуальное сравнение вариантов</string>
      </property>
      <layout class="QVBoxLayout" name="visualLayout">
+      <property name="spacing">
+       <number>15</number>
+      </property>
       <item>
        <widget class="QLabel" name="placeholderLabel">
         <property name="styleSheet">
-         <string notr="true">border:none;
-color:black;
-background-color: rgb(241, 241, 241);
-</string>
+         <string notr="true">border: 1px solid #e0e0e0; border-radius: 8px; color: #6c757d; background-color: #f6f9fc; padding: 20px; box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.05);</string>
         </property>
         <property name="text">
          <string>Здесь будут графики и диаграммы</string>
@@ -85,22 +127,17 @@ background-color: rgb(241, 241, 241);
    </item>
    <item>
     <widget class="QGroupBox" name="tableGroup">
-     <property name="styleSheet">
-      <string notr="true">background: #FFF7F7;
-border: 1px solid #000000;
-border-radius: 15px;
-color:black;</string>
-     </property>
      <property name="title">
       <string>Детальная таблица оценок</string>
      </property>
      <layout class="QVBoxLayout" name="tableLayout">
+      <property name="spacing">
+       <number>15</number>
+      </property>
       <item>
        <widget class="QLabel" name="tablePlaceholder">
         <property name="styleSheet">
-         <string notr="true">border:none;
-color:black;
-background-color: rgb(241, 241, 241);</string>
+         <string notr="true">border: 1px solid #e0e0e0; border-radius: 8px; color: #6c757d; background-color: #f6f9fc; padding: 20px; box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.05);</string>
         </property>
         <property name="text">
          <string>Здесь будет таблица с оценками</string>
@@ -115,22 +152,17 @@ background-color: rgb(241, 241, 241);</string>
    </item>
    <item>
     <widget class="QGroupBox" name="resultGroup">
-     <property name="styleSheet">
-      <string notr="true">background: #FFF7F7;
-border: 1px solid #000000;
-border-radius: 15px;
-color:black;</string>
-     </property>
      <property name="title">
       <string>Результат анализа</string>
      </property>
      <layout class="QVBoxLayout" name="resultLayout">
+      <property name="spacing">
+       <number>15</number>
+      </property>
       <item>
        <widget class="QLabel" name="resultLabel">
         <property name="styleSheet">
-         <string notr="true">border:none;
-color:black;
-background-color: rgb(241, 241, 241);</string>
+         <string notr="true">border: 1px solid #e0e0e0; border-radius: 8px; color: #6c757d; background-color: #f6f9fc; padding: 20px; box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.05);</string>
         </property>
         <property name="text">
          <string>Рекомендуемый вариант будет здесь</string>
@@ -145,6 +177,9 @@ background-color: rgb(241, 241, 241);</string>
    </item>
    <item>
     <layout class="QHBoxLayout" name="buttonsLayout">
+     <property name="spacing">
+      <number>15</number>
+     </property>
      <item>
       <widget class="QPushButton" name="saveReportBtn">
        <property name="minimumSize">
@@ -155,16 +190,6 @@ background-color: rgb(241, 241, 241);</string>
        </property>
        <property name="cursor">
         <cursorShape>PointingHandCursor</cursorShape>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">QPushButton{
-background-color: rgb(0, 168, 64);
-border:none;
-border-radius:5px;
-}
-QPushButton:hover{
-background-color: rgb(98, 216, 24);
-}</string>
        </property>
        <property name="text">
         <string>Сохранить отчет</string>
@@ -182,11 +207,6 @@ background-color: rgb(98, 216, 24);
        <property name="cursor">
         <cursorShape>PointingHandCursor</cursorShape>
        </property>
-       <property name="styleSheet">
-        <string notr="true">QBtn{
-
-}</string>
-       </property>
        <property name="text">
         <string>Экспорт</string>
        </property>
@@ -202,17 +222,6 @@ background-color: rgb(98, 216, 24);
        </property>
        <property name="cursor">
         <cursorShape>PointingHandCursor</cursorShape>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">QPushButton{
-background-color: #CB2F30;
-border:none;
-border-radius:5px;
-}
-QPushButton:hover{
-background-color: rgb(255, 22, 1);
-}
-</string>
        </property>
        <property name="text">
         <string>Назад</string>

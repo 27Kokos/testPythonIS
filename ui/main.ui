@@ -27,7 +27,7 @@
   </property>
   <property name="styleSheet">
    <string notr="true">QMainWindow{
-background-color: rgb(214, 225, 229);
+background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 #f0f4f8, stop:1 #d9e2ec);
 }</string>
   </property>
   <widget class="QWidget" name="centralwidget">
@@ -54,23 +54,24 @@ background-color: rgb(214, 225, 229);
     </property>
     <property name="styleSheet">
      <string notr="true">QWidget#widget {
-    background: #FFFFFF;
-    border: 1px solid #D9D9D9;
-    border-radius: 16px;
+    background: #ffffff;
+    border-right: 1px solid #e0e0e0;
+    border-radius: 0px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.05);
 }</string>
     </property>
     <widget class="QLabel" name="label">
      <property name="geometry">
       <rect>
-       <x>20</x>
-       <y>20</y>
-       <width>55</width>
-       <height>51</height>
+       <x>22</x>
+       <y>30</y>
+       <width>56</width>
+       <height>56</height>
       </rect>
      </property>
      <property name="styleSheet">
-      <string notr="true">background-color: rgb(222, 255, 252);
-border-radius:20;</string>
+      <string notr="true">background-color: transparent;
+border-radius: 28px;</string>
      </property>
      <property name="text">
       <string/>
@@ -86,7 +87,7 @@ border-radius:20;</string>
      <property name="geometry">
       <rect>
        <x>10</x>
-       <y>110</y>
+       <y>120</y>
        <width>81</width>
        <height>281</height>
       </rect>
@@ -99,15 +100,16 @@ border-radius:20;</string>
        <number>0</number>
       </property>
       <property name="verticalSpacing">
-       <number>8</number>
+       <number>12</number>
       </property>
       <item row="0" column="0" colspan="2">
        <widget class="QLabel" name="label_2">
         <property name="font">
          <font>
-          <pointsize>8</pointsize>
+          <pointsize>9</pointsize>
           <stylestrategy>PreferDefault</stylestrategy>
           <kerning>true</kerning>
+          <weight>600</weight>
          </font>
         </property>
         <property name="focusPolicy">
@@ -138,7 +140,7 @@ border-radius:20;</string>
          <bool>false</bool>
         </property>
         <property name="styleSheet">
-         <string notr="true">color: rgb(0, 0, 0);</string>
+         <string notr="true">color: #6c757d;</string>
         </property>
         <property name="frameShadow">
          <enum>QFrame::Plain</enum>
@@ -178,7 +180,7 @@ border-radius:20;</string>
          <number>20</number>
         </property>
         <property name="topMargin">
-         <number>0</number>
+         <number>10</number>
         </property>
         <property name="bottomMargin">
          <number>15</number>
@@ -193,8 +195,8 @@ border-radius:20;</string>
           </property>
           <property name="maximumSize">
            <size>
-            <width>20</width>
-            <height>20</height>
+            <width>40</width>
+            <height>40</height>
            </size>
           </property>
           <property name="baseSize">
@@ -211,10 +213,14 @@ border-radius:20;</string>
           </property>
           <property name="styleSheet">
            <string notr="true">QPushButton{
-background-color: rgb(255, 255, 255);
+background-color: transparent;
+border-radius: 20px;
 }
 QPushButton:hover{
-background-color: rgb(214, 225, 229);
+background-color: #f0f4f8;
+}
+QPushButton:pressed{
+background-color: #e0e0e0;
 }</string>
           </property>
           <property name="text">
@@ -223,6 +229,12 @@ background-color: rgb(214, 225, 229);
           <property name="icon">
            <iconset>
             <normaloff>../images/home.png</normaloff>../images/home.png</iconset>
+          </property>
+          <property name="iconSize">
+           <size>
+            <width>24</width>
+            <height>24</height>
+           </size>
           </property>
          </widget>
         </item>
@@ -252,8 +264,8 @@ background-color: rgb(214, 225, 229);
           </property>
           <property name="maximumSize">
            <size>
-            <width>20</width>
-            <height>20</height>
+            <width>40</width>
+            <height>40</height>
            </size>
           </property>
           <property name="baseSize">
@@ -270,10 +282,14 @@ background-color: rgb(214, 225, 229);
           </property>
           <property name="styleSheet">
            <string notr="true">QPushButton{
-background-color: rgb(255, 255, 255);
+background-color: transparent;
+border-radius: 20px;
 }
 QPushButton:hover{
-background-color: rgb(214, 225, 229);
+background-color: #f0f4f8;
+}
+QPushButton:pressed{
+background-color: #e0e0e0;
 }</string>
           </property>
           <property name="text">
@@ -282,6 +298,12 @@ background-color: rgb(214, 225, 229);
           <property name="icon">
            <iconset>
             <normaloff>../images/Union.png</normaloff>../images/Union.png</iconset>
+          </property>
+          <property name="iconSize">
+           <size>
+            <width>24</width>
+            <height>24</height>
+           </size>
           </property>
          </widget>
         </item>
@@ -311,8 +333,8 @@ background-color: rgb(214, 225, 229);
           </property>
           <property name="maximumSize">
            <size>
-            <width>20</width>
-            <height>20</height>
+            <width>40</width>
+            <height>40</height>
            </size>
           </property>
           <property name="baseSize">
@@ -329,10 +351,14 @@ background-color: rgb(214, 225, 229);
           </property>
           <property name="styleSheet">
            <string notr="true">QPushButton{
-background-color: rgb(255, 255, 255);
+background-color: transparent;
+border-radius: 20px;
 }
 QPushButton:hover{
-background-color: rgb(214, 225, 229);
+background-color: #f0f4f8;
+}
+QPushButton:pressed{
+background-color: #e0e0e0;
 }</string>
           </property>
           <property name="text">
@@ -341,6 +367,12 @@ background-color: rgb(214, 225, 229);
           <property name="icon">
            <iconset>
             <normaloff>../images/Union2.png</normaloff>../images/Union2.png</iconset>
+          </property>
+          <property name="iconSize">
+           <size>
+            <width>24</width>
+            <height>24</height>
+           </size>
           </property>
          </widget>
         </item>
@@ -379,8 +411,8 @@ background-color: rgb(214, 225, 229);
           </property>
           <property name="maximumSize">
            <size>
-            <width>20</width>
-            <height>20</height>
+            <width>40</width>
+            <height>40</height>
            </size>
           </property>
           <property name="baseSize">
@@ -397,10 +429,14 @@ background-color: rgb(214, 225, 229);
           </property>
           <property name="styleSheet">
            <string notr="true">QPushButton{
-background-color: rgb(255, 255, 255);
+background-color: transparent;
+border-radius: 20px;
 }
 QPushButton:hover{
-background-color: rgb(214, 225, 229);
+background-color: #f0f4f8;
+}
+QPushButton:pressed{
+background-color: #e0e0e0;
 }</string>
           </property>
           <property name="text">
@@ -412,8 +448,8 @@ background-color: rgb(214, 225, 229);
           </property>
           <property name="iconSize">
            <size>
-            <width>40</width>
-            <height>40</height>
+            <width>24</width>
+            <height>24</height>
            </size>
           </property>
          </widget>
@@ -426,7 +462,7 @@ background-color: rgb(214, 225, 229);
      <property name="geometry">
       <rect>
        <x>10</x>
-       <y>410</y>
+       <y>430</y>
        <width>81</width>
        <height>151</height>
       </rect>
@@ -439,15 +475,16 @@ background-color: rgb(214, 225, 229);
        <number>0</number>
       </property>
       <property name="verticalSpacing">
-       <number>8</number>
+       <number>12</number>
       </property>
       <item row="0" column="0" colspan="2">
        <widget class="QLabel" name="label_3">
         <property name="font">
          <font>
-          <pointsize>8</pointsize>
+          <pointsize>9</pointsize>
           <stylestrategy>PreferDefault</stylestrategy>
           <kerning>true</kerning>
+          <weight>600</weight>
          </font>
         </property>
         <property name="focusPolicy">
@@ -478,7 +515,7 @@ background-color: rgb(214, 225, 229);
          <bool>false</bool>
         </property>
         <property name="styleSheet">
-         <string notr="true">color: rgb(0, 0, 0);</string>
+         <string notr="true">color: #6c757d;</string>
         </property>
         <property name="frameShadow">
          <enum>QFrame::Plain</enum>
@@ -518,7 +555,7 @@ background-color: rgb(214, 225, 229);
          <number>20</number>
         </property>
         <property name="topMargin">
-         <number>0</number>
+         <number>10</number>
         </property>
         <property name="bottomMargin">
          <number>15</number>
@@ -533,8 +570,8 @@ background-color: rgb(214, 225, 229);
           </property>
           <property name="maximumSize">
            <size>
-            <width>20</width>
-            <height>20</height>
+            <width>40</width>
+            <height>40</height>
            </size>
           </property>
           <property name="baseSize">
@@ -551,10 +588,14 @@ background-color: rgb(214, 225, 229);
           </property>
           <property name="styleSheet">
            <string notr="true">QPushButton{
-background-color: rgb(255, 255, 255);
+background-color: transparent;
+border-radius: 20px;
 }
 QPushButton:hover{
-background-color: rgb(214, 225, 229);
+background-color: #f0f4f8;
+}
+QPushButton:pressed{
+background-color: #e0e0e0;
 }</string>
           </property>
           <property name="text">
@@ -563,6 +604,12 @@ background-color: rgb(214, 225, 229);
           <property name="icon">
            <iconset>
             <normaloff>../images/Bell.png</normaloff>../images/Bell.png</iconset>
+          </property>
+          <property name="iconSize">
+           <size>
+            <width>24</width>
+            <height>24</height>
+           </size>
           </property>
          </widget>
         </item>
@@ -592,8 +639,8 @@ background-color: rgb(214, 225, 229);
           </property>
           <property name="maximumSize">
            <size>
-            <width>20</width>
-            <height>20</height>
+            <width>40</width>
+            <height>40</height>
            </size>
           </property>
           <property name="baseSize">
@@ -610,10 +657,14 @@ background-color: rgb(214, 225, 229);
           </property>
           <property name="styleSheet">
            <string notr="true">QPushButton{
-background-color: rgb(255, 255, 255);
+background-color: transparent;
+border-radius: 20px;
 }
 QPushButton:hover{
-background-color: rgb(214, 225, 229);
+background-color: #f0f4f8;
+}
+QPushButton:pressed{
+background-color: #e0e0e0;
 }</string>
           </property>
           <property name="text">
@@ -622,6 +673,12 @@ background-color: rgb(214, 225, 229);
           <property name="icon">
            <iconset>
             <normaloff>../images/Settings.png</normaloff>../images/Settings.png</iconset>
+          </property>
+          <property name="iconSize">
+           <size>
+            <width>24</width>
+            <height>24</height>
+           </size>
           </property>
          </widget>
         </item>
@@ -633,10 +690,10 @@ background-color: rgb(214, 225, 229);
    <widget class="QWidget" name="widget_2" native="true">
     <property name="geometry">
      <rect>
-      <x>130</x>
-      <y>130</y>
-      <width>841</width>
-      <height>445</height>
+      <x>120</x>
+      <y>20</y>
+      <width>860</width>
+      <height>560</height>
      </rect>
     </property>
     <property name="minimumSize">
@@ -646,112 +703,19 @@ background-color: rgb(214, 225, 229);
      </size>
     </property>
     <property name="styleSheet">
-     <string notr="true">
-background: #FFF7F7;
-border: 1px solid #000000;
-border-radius: 15px;
-</string>
-    </property>
-   </widget>
-   <widget class="QWidget" name="horizontalLayoutWidget">
-    <property name="geometry">
-     <rect>
-      <x>350</x>
-      <y>20</y>
-      <width>621</width>
-      <height>89</height>
-     </rect>
-    </property>
-    <layout class="QHBoxLayout" name="horizontalLayout">
-     <item>
-      <widget class="QTextBrowser" name="textBrowser_2">
-       <property name="minimumSize">
-        <size>
-         <width>356</width>
-         <height>35</height>
-        </size>
-       </property>
-       <property name="maximumSize">
-        <size>
-         <width>356</width>
-         <height>25</height>
-        </size>
-       </property>
-       <property name="font">
-        <font>
-         <pointsize>8</pointsize>
-        </font>
-       </property>
-       <property name="cursor" stdset="0">
-        <cursorShape>IBeamCursor</cursorShape>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">padding-left:10px;
-padding-top:5px;
-background: #F8EBEB;
-border-radius: 15px;
-align-items: center;
-text-align: center;
-color: #5A64ED;
-
-</string>
-       </property>
-       <property name="html">
-        <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:8pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;Поиск&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QTextBrowser" name="textBrowser">
-       <property name="minimumSize">
-        <size>
-         <width>195</width>
-         <height>48</height>
-        </size>
-       </property>
-       <property name="maximumSize">
-        <size>
-         <width>195</width>
-         <height>48</height>
-        </size>
-       </property>
-       <property name="font">
-        <font>
-         <pointsize>14</pointsize>
-        </font>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">padding-top:5px;
-background: #F8EBEB;
+     <string notr="true">background: #ffffff;
+border: none;
 border-radius: 20px;
-align-items: center;
-text-align: center;
-color: #5A64ED;
-
-</string>
-       </property>
-       <property name="html">
-        <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:14pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;DecidePro&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-       </property>
-      </widget>
-     </item>
-    </layout>
+box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.05);</string>
+    </property>
    </widget>
    <widget class="QPushButton" name="pushButton_7">
     <property name="geometry">
      <rect>
-      <x>130</x>
-      <y>90</y>
-      <width>207</width>
-      <height>31</height>
+      <x>790</x>
+      <y>40</y>
+      <width>180</width>
+      <height>40</height>
      </rect>
     </property>
     <property name="sizePolicy">
@@ -762,13 +726,14 @@ p, li { white-space: pre-wrap; }
     </property>
     <property name="minimumSize">
      <size>
-      <width>207</width>
-      <height>31</height>
+      <width>180</width>
+      <height>40</height>
      </size>
     </property>
     <property name="font">
      <font>
       <pointsize>12</pointsize>
+      <weight>600</weight>
      </font>
     </property>
     <property name="cursor">
@@ -776,14 +741,17 @@ p, li { white-space: pre-wrap; }
     </property>
     <property name="styleSheet">
      <string notr="true">QPushButton{
-background: #00A840;
-border-radius: 10px;
-text-align: center;
-color: #FFFFFF;
-padding-left:10px;
+background: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 #00b894, stop:1 #00d2d3);
+border-radius: 20px;
+color: #ffffff;
+padding: 0px;
+font-weight: 600;
 }
 QPushButton:hover{
-background-color:rgb(0, 241, 28);
+background: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 #01907a, stop:1 #00b3b4);
+}
+QPushButton:pressed{
+background: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 #017f6a, stop:1 #009a9b);
 }</string>
     </property>
     <property name="text">

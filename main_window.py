@@ -75,7 +75,7 @@ class MainWindow(QMainWindow):
             if hasattr(home_widget, 'statsLabel'):
                 decisions_count = len(self.db.get_decisions())
                 analyses_count = sum(1 for dec in self.db.get_decisions() if self.db.get_analysis_results(dec[0]))
-                home_widget.statsLabel.setText(f"📊 Быстрая статистика:\n• Всего решений: {decisions_count}\n• Завершенных анализов: {analyses_count}\n• Активных проектов: 0")
+                home_widget.statsLabel.setText(f" Быстрая статистика:\n• Всего решений: {decisions_count}\n• Завершенных анализов: {analyses_count}\n• Активных проектов: 0")
             
             self.widget_2.layout().addWidget(home_widget)
     
@@ -98,15 +98,27 @@ class MainWindow(QMainWindow):
                     item.setData(Qt.ItemDataRole.UserRole, dec[0])
                     decisions_list.addItem(item)
                 decisions_list.itemDoubleClicked.connect(self.open_decision)
-            else:
-                if hasattr(decisions_widget, 'placeholderLabel'):
-                    text = "Мои решения:\n\n"
-                    for dec in decisions:
-                        text += f"- {dec[1]} (создано {dec[3]})\n"
-                    decisions_widget.placeholderLabel.setText(text)
+                
+            if hasattr(decisions_widget, 'deleteButton'):
+                decisions_widget.deleteButton.clicked.connect(self.delete_selected_decision)
             
             self.widget_2.layout().addWidget(decisions_widget)
 
+    def delete_selected_decision(self):
+        if hasattr(self.widget_2.layout().itemAt(0).widget(), 'decisionsList'):
+            decisions_list = self.widget_2.layout().itemAt(0).widget().decisionsList
+            selected_item = decisions_list.currentItem()
+            if selected_item:
+                decision_id = selected_item.data(Qt.ItemDataRole.UserRole)
+                reply = QMessageBox.question(self, "Удаление", "Удалить это решение?", 
+                                             QMessageBox.StandardButton.Yes | QMessageBox.StandardButton.No)
+                if reply == QMessageBox.StandardButton.Yes:
+                    if self.db.delete_decision(decision_id):
+                        decisions_list.takeItem(decisions_list.currentRow())
+                        QMessageBox.information(self, "Успех", "Решение удалено")
+                    else:
+                        QMessageBox.warning(self, "Ошибка", "Не удалось удалить решение")
+    
     def open_decision(self, item):
         decision_id = item.data(Qt.ItemDataRole.UserRole)
         decision_data = self.db.get_decision_by_id(decision_id)

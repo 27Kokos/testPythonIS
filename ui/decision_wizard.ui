@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>600</width>
-    <height>500</height>
+    <width>595</width>
+    <height>620</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -15,55 +15,80 @@
   </property>
   <property name="styleSheet">
    <string notr="true">QDialog {
-    background-color: rgb(214, 225, 229);
+    background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 #f0f4f8, stop:1 #d9e2ec);
     font-family: 'Segoe UI', Arial, sans-serif;
-    color: black;
-   }
-   QLabel {
-    color: #2d3748;
+    color: #2c3e50;
+}
+QLabel {
+    color: #2c3e50;
     font-weight: 500;
-   }
-   QLineEdit, QTextEdit {
-    border: 2px solid #e2e8f0;
+}
+QLineEdit, QTextEdit, QComboBox, QSpinBox, QListWidget, QTableWidget {
+    border: 1px solid #e0e0e0;
     border-radius: 8px;
-    padding: 8px;
-    background: white;
-   }
-   QPushButton {
-    background-color: #4299e1;
+    padding: 10px;
+    background: #ffffff;
+    color: #34495e;
+    font-size: 14px;
+}
+QPushButton {
+    background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 #00b894, stop:1 #00d2d3);
     color: white;
     border: none;
-    border-radius: 8px;
-    padding: 10px 20px;
-    font-weight: 500;
-   }
-   QPushButton:hover {
-    background-color: #3182ce;
-   }
-   QPushButton:disabled {
+    border-radius: 12px;
+    padding: 12px 24px;
+    font-weight: 600;
+    font-size: 14px;
+}
+QPushButton:hover {
+    background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 #01907a, stop:1 #00b3b4);
+}
+QPushButton:pressed {
+    background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 #017f6a, stop:1 #009a9b);
+}
+QPushButton#backBtn {
+    background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 #d55526ff, stop:1 #009a9b);
+}
+QPushButton#backBtn:hover {
+    background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 #c75c47, stop:1 #b71c1c);
+}
+QPushButton#cancelBtn {
+    background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 #e17055, stop:1 #d63031);
+}
+QPushButton#cancelBtn:hover {
+    background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 #c75c47, stop:1 #b71c1c);
+}
+QPushButton#cancelBtn:pressed {
+    background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 #af503f, stop:1 #9e0f0f);
+}
+QPushButton:disabled {
     background-color: #a0aec0;
-   }</string>
+    color: #e2e8f0;
+}</string>
   </property>
   <widget class="QWidget" name="verticalLayoutWidget">
    <property name="geometry">
     <rect>
-     <x>10</x>
-     <y>10</y>
-     <width>581</width>
-     <height>431</height>
+     <x>20</x>
+     <y>20</y>
+     <width>560</width>
+     <height>528</height>
     </rect>
    </property>
    <layout class="QVBoxLayout" name="verticalLayout">
+    <property name="spacing">
+     <number>20</number>
+    </property>
     <item>
      <widget class="QLabel" name="stepLabel">
+      <property name="styleSheet">
+       <string notr="true">font-weight: bold; font-size: 16px; padding: 12px; background-color: #ffffff; border-radius: 10px; box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.05); color: #2c3e50;</string>
+      </property>
       <property name="text">
        <string>Шаг 1/5: Основное</string>
       </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">font-weight: bold; font-size: 14px; padding: 10px;</string>
       </property>
      </widget>
     </item>
@@ -73,27 +98,25 @@
        <number>0</number>
       </property>
       <widget class="QWidget" name="page">
-       <property name="geometry">
-        <rect>
-         <x>0</x>
-         <y>0</y>
-         <width>561</width>
-         <height>351</height>
-        </rect>
-       </property>
        <layout class="QVBoxLayout" name="verticalLayout_2">
+        <property name="spacing">
+         <number>15</number>
+        </property>
         <item>
          <widget class="QLabel" name="label">
+          <property name="styleSheet">
+           <string notr="true">font-size: 18px; font-weight: bold; color: #2c3e50;</string>
+          </property>
           <property name="text">
            <string>Основная информация</string>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">font-size: 16px; font-weight: bold;</string>
           </property>
          </widget>
         </item>
         <item>
          <widget class="QLabel" name="label_2">
+          <property name="styleSheet">
+           <string notr="true">color: #6c757d;</string>
+          </property>
           <property name="text">
            <string>Название решения:</string>
           </property>
@@ -104,6 +127,9 @@
         </item>
         <item>
          <widget class="QLabel" name="label_3">
+          <property name="styleSheet">
+           <string notr="true">color: #6c757d;</string>
+          </property>
           <property name="text">
            <string>Описание (необязательно):</string>
           </property>
@@ -114,42 +140,33 @@
           <property name="maximumSize">
            <size>
             <width>16777215</width>
-            <height>100</height>
+            <height>170</height>
            </size>
-          </property>
-          <property name="html">
-           <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:8.25pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
          </widget>
         </item>
        </layout>
       </widget>
       <widget class="QWidget" name="page_2">
-       <property name="geometry">
-        <rect>
-         <x>0</x>
-         <y>0</y>
-         <width>561</width>
-         <height>351</height>
-        </rect>
-       </property>
        <layout class="QVBoxLayout" name="verticalLayout_3">
+        <property name="spacing">
+         <number>15</number>
+        </property>
         <item>
          <widget class="QLabel" name="label_4">
+          <property name="styleSheet">
+           <string notr="true">font-size: 18px; font-weight: bold; color: #2c3e50;</string>
+          </property>
           <property name="text">
            <string>Варианты решения</string>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">font-size: 16px; font-weight: bold;</string>
           </property>
          </widget>
         </item>
         <item>
          <widget class="QLabel" name="label_5">
+          <property name="styleSheet">
+           <string notr="true">color: #6c757d;</string>
+          </property>
           <property name="text">
            <string>Добавьте варианты для сравнения:</string>
           </property>
@@ -157,6 +174,9 @@ p, li { white-space: pre-wrap; }
         </item>
         <item>
          <layout class="QHBoxLayout" name="horizontalLayout">
+          <property name="spacing">
+           <number>10</number>
+          </property>
           <item>
            <widget class="QLineEdit" name="optionNameEdit">
             <property name="placeholderText">
@@ -186,27 +206,25 @@ p, li { white-space: pre-wrap; }
        </layout>
       </widget>
       <widget class="QWidget" name="page_3">
-       <property name="geometry">
-        <rect>
-         <x>0</x>
-         <y>0</y>
-         <width>561</width>
-         <height>351</height>
-        </rect>
-       </property>
        <layout class="QVBoxLayout" name="verticalLayout_4">
+        <property name="spacing">
+         <number>15</number>
+        </property>
         <item>
          <widget class="QLabel" name="label_6">
+          <property name="styleSheet">
+           <string notr="true">font-size: 18px; font-weight: bold; color: #2c3e50;</string>
+          </property>
           <property name="text">
            <string>Критерии оценки</string>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">font-size: 16px; font-weight: bold;</string>
           </property>
          </widget>
         </item>
         <item>
          <widget class="QLabel" name="label_7">
+          <property name="styleSheet">
+           <string notr="true">color: #6c757d;</string>
+          </property>
           <property name="text">
            <string>Выберите шаблон:</string>
           </property>
@@ -238,6 +256,9 @@ p, li { white-space: pre-wrap; }
         </item>
         <item>
          <widget class="QLabel" name="label_8">
+          <property name="styleSheet">
+           <string notr="true">color: #6c757d;</string>
+          </property>
           <property name="text">
            <string>Критерии:</string>
           </property>
@@ -245,6 +266,9 @@ p, li { white-space: pre-wrap; }
         </item>
         <item>
          <layout class="QHBoxLayout" name="horizontalLayout_2">
+          <property name="spacing">
+           <number>10</number>
+          </property>
           <item>
            <widget class="QLineEdit" name="criterionNameEdit">
             <property name="placeholderText">
@@ -268,6 +292,9 @@ p, li { white-space: pre-wrap; }
           </item>
           <item>
            <widget class="QLabel" name="label_9">
+            <property name="styleSheet">
+             <string notr="true">color: #6c757d;</string>
+            </property>
             <property name="text">
              <string>Вес:</string>
             </property>
@@ -290,6 +317,9 @@ p, li { white-space: pre-wrap; }
         </item>
         <item>
          <layout class="QHBoxLayout" name="horizontalLayout_3">
+          <property name="spacing">
+           <number>10</number>
+          </property>
           <item>
            <widget class="QPushButton" name="addCriterionBtn">
             <property name="text">
@@ -308,79 +338,76 @@ p, li { white-space: pre-wrap; }
         </item>
         <item>
          <widget class="QTableWidget" name="criteriaTable">
-          <column>
-           <property name="text">
-            <string>Название</string>
-           </property>
-          </column>
-          <column>
-           <property name="text">
-            <string>Тип</string>
-           </property>
-          </column>
-          <column>
-           <property name="text">
-            <string>Вес</string>
-           </property>
-          </column>
+          <property name="rowCount">
+           <number>0</number>
+          </property>
+          <property name="columnCount">
+           <number>3</number>
+          </property>
+          <column/>
+          <column/>
+          <column/>
          </widget>
         </item>
        </layout>
       </widget>
       <widget class="QWidget" name="page_4">
-       <property name="geometry">
-        <rect>
-         <x>0</x>
-         <y>0</y>
-         <width>561</width>
-         <height>351</height>
-        </rect>
-       </property>
        <layout class="QVBoxLayout" name="verticalLayout_5">
+        <property name="spacing">
+         <number>15</number>
+        </property>
         <item>
          <widget class="QLabel" name="label_10">
+          <property name="styleSheet">
+           <string notr="true">font-size: 18px; font-weight: bold; color: #2c3e50;</string>
+          </property>
           <property name="text">
            <string>Оценка вариантов</string>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">font-size: 16px; font-weight: bold;</string>
           </property>
          </widget>
         </item>
         <item>
          <widget class="QLabel" name="label_11">
+          <property name="styleSheet">
+           <string notr="true">color: #6c757d;</string>
+          </property>
           <property name="text">
            <string>Оцените варианты по каждому критерию:</string>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="QTableWidget" name="evaluationsTable"/>
+         <widget class="QTableWidget" name="evaluationsTable">
+          <property name="rowCount">
+           <number>0</number>
+          </property>
+          <property name="columnCount">
+           <number>0</number>
+          </property>
+         </widget>
         </item>
        </layout>
       </widget>
       <widget class="QWidget" name="page_5">
-       <property name="geometry">
-        <rect>
-         <x>0</x>
-         <y>0</y>
-         <width>561</width>
-         <height>351</height>
-        </rect>
-       </property>
        <layout class="QVBoxLayout" name="verticalLayout_6">
+        <property name="spacing">
+         <number>15</number>
+        </property>
         <item>
          <widget class="QLabel" name="label_12">
+          <property name="styleSheet">
+           <string notr="true">font-size: 18px; font-weight: bold; color: #2c3e50;</string>
+          </property>
           <property name="text">
            <string>Результаты анализа</string>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">font-size: 16px; font-weight: bold;</string>
           </property>
          </widget>
         </item>
         <item>
          <widget class="QLabel" name="label_13">
+          <property name="styleSheet">
+           <string notr="true">color: #6c757d;</string>
+          </property>
           <property name="text">
            <string>Ранжированные варианты по итоговой оценке:</string>
           </property>
@@ -402,33 +429,46 @@ p, li { white-space: pre-wrap; }
     </item>
     <item>
      <layout class="QHBoxLayout" name="horizontalLayout_4">
-      <item>
-       <widget class="QPushButton" name="backBtn">
-        <property name="text">
-         <string>Назад</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QPushButton" name="nextBtn">
-        <property name="text">
-         <string>Далее</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QPushButton" name="cancelBtn">
-        <property name="text">
-         <string>Отмена</string>
-        </property>
-       </widget>
-      </item>
+      <property name="spacing">
+       <number>10</number>
+      </property>
      </layout>
     </item>
    </layout>
   </widget>
-  <resources/>
-  <connections/>
+  <widget class="QWidget" name="horizontalLayoutWidget">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>550</y>
+     <width>561</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <layout class="QHBoxLayout" name="horizontalLayout_5">
+    <item>
+     <widget class="QPushButton" name="backBtn">
+      <property name="text">
+       <string>Назад</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="nextBtn">
+      <property name="text">
+       <string>Далее</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="cancelBtn">
+      <property name="text">
+       <string>Отмена</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
  </widget>
  <resources/>
  <connections/>
