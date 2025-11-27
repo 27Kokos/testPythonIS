@@ -7,7 +7,7 @@ from database import Database
 def main():
     Database()
     
-    app = QApplication(sys.argv)
+    app = QApplication(sys.argv)    
     
     welcome = WelcomeWindow()
     welcome.show()

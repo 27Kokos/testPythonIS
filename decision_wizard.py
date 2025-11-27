@@ -15,7 +15,6 @@ class DecisionWizard(QDialog):
             'title': '', 'description': '', 'options': [], 'criteria': [], 'evaluations': {}
         }
         
-        # Шаблоны (упрощённые)
         self.templates = {
             "Покупка товара": [{"name": "Цена", "type": "number", "weight": 4}, {"name": "Качество", "type": "boolean", "weight": 5}],
             "Выбор проекта": [{"name": "Бюджет", "type": "number", "weight": 5}, {"name": "Сроки", "type": "number", "weight": 4}],

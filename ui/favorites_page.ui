@@ -44,16 +44,19 @@ border:none;</string>
     </widget>
    </item>
    <item>
-    <widget class="QLabel" name="placeholderLabel">
+    <widget class="QListWidget" name="favoritesList">
      <property name="styleSheet">
-      <string notr="true">font-size: 16px; color: #666666; background: #e0e1dd; padding: 20px; border-radius: 10px; border: 1px solid #E0E0E0;
-margin-right:20px;</string>
+      <string notr="true">font-size: 14px; background: #ffffff; border: 1px solid #e0e0e0; border-radius: 10px; padding: 10px; color:black;</string>
      </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QPushButton" name="refreshButton">
      <property name="text">
-      <string>Раздел в разработке</string>
+      <string>Обновить</string>
      </property>
-     <property name="alignment">
-      <set>Qt::AlignCenter</set>
+     <property name="styleSheet">
+      <string notr="true">background-color: #4fd1c5; color: white; border-radius: 5px; padding: 10px;</string>
      </property>
     </widget>
    </item>

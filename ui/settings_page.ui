@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>SettingsPage</class>
+ <widget class="QWidget" name="SettingsPage">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>860</width>
+    <height>445</height>
+   </rect>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">background: #ffffff; border: none; border-radius: 12px; padding: 20px; box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.05); font-family: 'Segoe UI', Arial, sans-serif;</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <property name="spacing">
+    <number>25</number>
+   </property>
+   <property name="leftMargin">
+    <number>30</number>
+   </property>
+   <property name="topMargin">
+    <number>30</number>
+   </property>
+   <property name="rightMargin">
+    <number>30</number>
+   </property>
+   <property name="bottomMargin">
+    <number>30</number>
+   </property>
+   <item>
+    <widget class="QLabel" name="titleLabel">
+     <property name="styleSheet">
+      <string notr="true">font-size: 18px; font-weight: bold; color: #2c3e50; border: none;</string>
+     </property>
+     <property name="text">
+      <string>Настройки</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+     <property name="wordWrap">
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QGroupBox" name="languageGroup">
+     <property name="title">
+      <string>Язык</string>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QGroupBox {
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.05);
+}
+QGroupBox::title {
+    color: #2c3e50;
+    font-weight: 600;
+    font-size: 16px;
+    padding: 5px 10px;
+}</string>
+     </property>
+     <layout class="QHBoxLayout" name="languageLayout">
+      <property name="spacing">
+       <number>15</number>
+      </property>
+      <item>
+       <widget class="QLabel" name="languageLabel">
+        <property name="styleSheet">
+         <string notr="true">color: #6c757d; font-size: 14px;</string>
+        </property>
+        <property name="text">
+         <string>Выберите язык:</string>
+        </property>
+        <property name="wordWrap">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QComboBox" name="languageCombo">
+        <property name="minimumSize">
+         <size>
+          <width>200</width>
+          <height>40</height>
+         </size>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QComboBox {
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    padding: 10px;
+    color: #2c3e50;
+    background-color: #ffffff;
+    font-size: 14px;
+}
+QComboBox::drop-down {
+    border: none;
+}
+QComboBox QAbstractItemView {
+    border: 1px solid #e0e0e0;
+    background-color: #ffffff;
+    color: #2c3e50;
+    padding: 5px;
+}</string>
+        </property>
+        <item>
+         <property name="text">
+          <string>Русский</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>English</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="QGroupBox" name="dataGroup">
+     <property name="title">
+      <string>Управление данными</string>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QGroupBox {
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.05);
+}
+QGroupBox::title {
+    color: #2c3e50;
+    font-weight: 600;
+    font-size: 16px;
+    padding: 5px 10px;
+}</string>
+     </property>
+     <layout class="QVBoxLayout" name="dataLayout">
+      <property name="spacing">
+       <number>15</number>
+      </property>
+      <item>
+       <widget class="QPushButton" name="clearDataButton">
+        <property name="minimumSize">
+         <size>
+          <width>200</width>
+          <height>40</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>Очистить все данные</string>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton {
+    background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 #e17055, stop:1 #d63031);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 20px;
+    font-weight: 600;
+    font-size: 14px;
+}
+QPushButton:hover {
+    background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 #c75c47, stop:1 #b71c1c);
+}
+QPushButton:pressed {
+    background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 #af503f, stop:1 #9e0f0f);
+}</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <spacer name="verticalSpacer">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>20</width>
+       <height>40</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

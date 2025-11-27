@@ -1,4 +1,4 @@
-from PyQt6.QtWidgets import QDialog
+from PyQt6.QtWidgets import QDialog, QMessageBox  # Добавлен импорт QMessageBox
 from PyQt6 import uic
 import os
 from PyQt6.QtGui import QIcon
@@ -25,6 +25,8 @@ class AnalysisDialog(QDialog):
                 self.saveReportBtn.clicked.connect(self.save_report)
             if hasattr(self, 'exportBtn'):
                 self.exportBtn.clicked.connect(self.export_data)
+            if hasattr(self, 'favoriteBtn'):
+                self.favoriteBtn.clicked.connect(self.toggle_favorite)
                 
         except Exception as e:
             print(f"Ошибка загрузки UI окна анализа: {e}")
@@ -70,6 +72,9 @@ class AnalysisDialog(QDialog):
                     table_text += row + "\n"
                 self.detailedTableLabel.setText(table_text)
                 
+            if hasattr(self, 'favoriteBtn'):
+                self.favoriteBtn.setText("Удалить из избранного" if self.db.is_favorite(self.decision_id) else "Добавить в избранное")
+                
         except Exception as e:
             print(f"Ошибка загрузки данных анализа: {e}")
             if hasattr(self, 'resultLabel'):
@@ -80,3 +85,19 @@ class AnalysisDialog(QDialog):
 
     def export_data(self):
         print("Экспорт данных...")
+
+    def toggle_favorite(self):
+        if self.db.is_favorite(self.decision_id):
+            if self.db.remove_from_favorites(self.decision_id):
+                QMessageBox.information(self, "Успех", "Удалено из избранного")
+                if hasattr(self, 'favoriteBtn'):
+                    self.favoriteBtn.setText("Добавить в избранное")
+            else:
+                QMessageBox.warning(self, "Ошибка", "Не удалось удалить из избранного")
+        else:
+            if self.db.add_to_favorites(self.decision_id):
+                QMessageBox.information(self, "Успех", "Добавлено в избранное")
+                if hasattr(self, 'favoriteBtn'):
+                    self.favoriteBtn.setText("Удалить из избранного")
+            else:
+                QMessageBox.warning(self, "Ошибка", "Не удалось добавить в избранное")

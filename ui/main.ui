@@ -89,7 +89,7 @@ border-radius: 28px;</string>
        <x>10</x>
        <y>120</y>
        <width>81</width>
-       <height>281</height>
+       <height>231</height>
       </rect>
      </property>
      <layout class="QFormLayout" name="formLayout">
@@ -107,9 +107,10 @@ border-radius: 28px;</string>
         <property name="font">
          <font>
           <pointsize>9</pointsize>
+          <weight>88</weight>
+          <bold>true</bold>
           <stylestrategy>PreferDefault</stylestrategy>
           <kerning>true</kerning>
-          <weight>600</weight>
          </font>
         </property>
         <property name="focusPolicy">
@@ -310,75 +311,6 @@ background-color: #e0e0e0;
        </layout>
       </item>
       <item row="3" column="0" colspan="2">
-       <layout class="QVBoxLayout" name="verticalLayout_5">
-        <property name="spacing">
-         <number>0</number>
-        </property>
-        <property name="leftMargin">
-         <number>20</number>
-        </property>
-        <property name="topMargin">
-         <number>0</number>
-        </property>
-        <property name="bottomMargin">
-         <number>15</number>
-        </property>
-        <item>
-         <widget class="QPushButton" name="pushButton_3">
-          <property name="minimumSize">
-           <size>
-            <width>40</width>
-            <height>40</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>40</width>
-            <height>40</height>
-           </size>
-          </property>
-          <property name="baseSize">
-           <size>
-            <width>0</width>
-            <height>0</height>
-           </size>
-          </property>
-          <property name="layoutDirection">
-           <enum>Qt::LeftToRight</enum>
-          </property>
-          <property name="autoFillBackground">
-           <bool>false</bool>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">QPushButton{
-background-color: transparent;
-border-radius: 20px;
-}
-QPushButton:hover{
-background-color: #f0f4f8;
-}
-QPushButton:pressed{
-background-color: #e0e0e0;
-}</string>
-          </property>
-          <property name="text">
-           <string/>
-          </property>
-          <property name="icon">
-           <iconset>
-            <normaloff>../images/Union2.png</normaloff>../images/Union2.png</iconset>
-          </property>
-          <property name="iconSize">
-           <size>
-            <width>24</width>
-            <height>24</height>
-           </size>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </item>
-      <item row="4" column="0" colspan="2">
        <layout class="QVBoxLayout" name="verticalLayout_6">
         <property name="spacing">
          <number>0</number>
@@ -462,9 +394,9 @@ background-color: #e0e0e0;
      <property name="geometry">
       <rect>
        <x>10</x>
-       <y>430</y>
+       <y>370</y>
        <width>81</width>
-       <height>151</height>
+       <height>165</height>
       </rect>
      </property>
      <layout class="QFormLayout" name="formLayout_2">
@@ -482,9 +414,10 @@ background-color: #e0e0e0;
         <property name="font">
          <font>
           <pointsize>9</pointsize>
+          <weight>88</weight>
+          <bold>true</bold>
           <stylestrategy>PreferDefault</stylestrategy>
           <kerning>true</kerning>
-          <weight>600</weight>
          </font>
         </property>
         <property name="focusPolicy">
@@ -732,8 +665,8 @@ box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.05);</string>
     </property>
     <property name="font">
      <font>
-      <pointsize>12</pointsize>
-      <weight>600</weight>
+      <weight>75</weight>
+      <bold>true</bold>
      </font>
     </property>
     <property name="cursor">

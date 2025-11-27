@@ -71,6 +71,15 @@ class Database:
                     )
                 ''')
                 
+                cursor.execute('''
+                    CREATE TABLE IF NOT EXISTS Favorites (
+                        id INTEGER PRIMARY KEY AUTOINCREMENT,
+                        decision_id INTEGER UNIQUE,
+                        added_at TEXT,
+                        FOREIGN KEY (decision_id) REFERENCES Decisions(id) ON DELETE CASCADE
+                    )
+                ''')
+                
                 conn.commit()
         except sqlite3.Error as e:
             print(f"Ошибка создания таблиц: {e}")
@@ -247,4 +256,71 @@ class Database:
                 return True
         except sqlite3.Error as e:
             print(f"Ошибка удаления решения: {e}")
+            return False
+
+    def clear_all_data(self):
+        try:
+            with sqlite3.connect(self.db_path) as conn:
+                cursor = conn.cursor()
+                cursor.execute('DELETE FROM Evaluations')
+                cursor.execute('DELETE FROM AnalysisResults')
+                cursor.execute('DELETE FROM Criteria')
+                cursor.execute('DELETE FROM Options')
+                cursor.execute('DELETE FROM Decisions')
+                cursor.execute('DELETE FROM Favorites')
+                conn.commit()
+                return True
+        except sqlite3.Error as e:
+            print(f"Ошибка очистки всех данных: {e}")
+            return False
+
+    # Методы для работы с избранным
+    def add_to_favorites(self, decision_id):
+        try:
+            with sqlite3.connect(self.db_path) as conn:
+                cursor = conn.cursor()
+                cursor.execute('''
+                    INSERT OR IGNORE INTO Favorites (decision_id, added_at)
+                    VALUES (?, ?)
+                ''', (decision_id, datetime.now().strftime("%Y-%m-%d %H:%M:%S")))
+                conn.commit()
+                return True
+        except sqlite3.Error as e:
+            print(f"Ошибка добавления в избранное: {e}")
+            return False
+
+    def remove_from_favorites(self, decision_id):
+        try:
+            with sqlite3.connect(self.db_path) as conn:
+                cursor = conn.cursor()
+                cursor.execute('DELETE FROM Favorites WHERE decision_id = ?', (decision_id,))
+                conn.commit()
+                return True
+        except sqlite3.Error as e:
+            print(f"Ошибка удаления из избранного: {e}")
+            return False
+
+    def get_favorites(self):
+        try:
+            with sqlite3.connect(self.db_path) as conn:
+                cursor = conn.cursor()
+                cursor.execute('''
+                    SELECT d.id, d.title, d.description, d.created_at, d.template_used 
+                    FROM Favorites f
+                    JOIN Decisions d ON f.decision_id = d.id
+                    ORDER BY f.added_at DESC
+                ''')
+                return cursor.fetchall()
+        except sqlite3.Error as e:
+            print(f"Ошибка получения избранного: {e}")
+            return []
+
+    def is_favorite(self, decision_id):
+        try:
+            with sqlite3.connect(self.db_path) as conn:
+                cursor = conn.cursor()
+                cursor.execute('SELECT COUNT(*) FROM Favorites WHERE decision_id = ?', (decision_id,))
+                return cursor.fetchone()[0] > 0
+        except sqlite3.Error as e:
+            print(f"Ошибка проверки избранного: {e}")
             return False

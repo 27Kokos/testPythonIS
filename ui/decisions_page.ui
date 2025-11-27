@@ -51,19 +51,6 @@ color:black;</string>
      </property>
     </widget>
    </item>
-   <item>
-    <widget class="QPushButton" name="deleteButton">
-     <property name="cursor">
-      <cursorShape>PointingHandCursor</cursorShape>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">background-color: #f56565; color: white; border-radius: 5px; padding: 10px;</string>
-     </property>
-     <property name="text">
-      <string>Удалить выбранное</string>
-     </property>
-    </widget>
-   </item>
   </layout>
  </widget>
  <resources/>
